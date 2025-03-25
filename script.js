@@ -63,7 +63,7 @@ function startGame() {
   document.getElementById("gameScreen").classList.remove("hidden");
   startTime = Date.now();
   penaltyTime = 0;
-  timerInterval = setInterval(updateTimer, 1000);
+  timerInterval = setInterval(updateTimer, 50); // statt 1000
   showQuestion();
 }
 
@@ -72,11 +72,11 @@ function updateTimer() {
 
   const minutes = Math.floor(totalMilliseconds / 60000);
   const seconds = Math.floor((totalMilliseconds % 60000) / 1000);
-  const milliseconds = totalMilliseconds % 1000;
+  const milliseconds = Math.floor((totalMilliseconds % 1000) / 10); // 0–99 statt 0–999
 
   const paddedMinutes = String(minutes).padStart(2, "0");
   const paddedSeconds = String(seconds).padStart(2, "0");
-  const paddedMilliseconds = String(milliseconds).padStart(3, "0");
+  const paddedMilliseconds = String(milliseconds).padStart(2, "0");
 
   document.getElementById(
     "timer"
