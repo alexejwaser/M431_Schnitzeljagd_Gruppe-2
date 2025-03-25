@@ -1,4 +1,3 @@
-// Fragen-Datenbank mit Bildern, Fragen, Antworttypen und Lösungen
 const questions = [
   {
     image: "https://via.placeholder.com/600x300?text=Posten+1",
@@ -55,27 +54,31 @@ const questions = [
 
 let currentQuestion = 0;
 let startTime = 0;
+let penaltyTime = 0;
 let timerInterval;
+let wrongAttempts = 0;
 
-// Startet das Spiel
 function startGame() {
   document.getElementById("startScreen").classList.add("hidden");
   document.getElementById("gameScreen").classList.remove("hidden");
   startTime = Date.now();
+  penaltyTime = 0;
   timerInterval = setInterval(updateTimer, 1000);
   showQuestion();
 }
 
-// Aktualisiert den Timer jede Sekunde
 function updateTimer() {
-  const seconds = Math.floor((Date.now() - startTime) / 1000);
+  const seconds = Math.floor((Date.now() - startTime) / 1000) + penaltyTime;
   document.getElementById("timer").textContent = `Zeit: ${seconds}s`;
 }
 
-// Zeigt die aktuelle Frage an
 function showQuestion() {
   const container = document.getElementById("questionContainer");
+  const feedbackBox = document.getElementById("feedback");
   container.innerHTML = "";
+  feedbackBox.classList.add("hidden");
+  feedbackBox.textContent = "";
+  wrongAttempts = 0;
 
   const q = questions[currentQuestion];
 
@@ -92,6 +95,17 @@ function showQuestion() {
     input.type = "text";
     input.id = "userAnswer";
     container.appendChild(input);
+
+    const submit = document.createElement("button");
+    submit.textContent = "Antwort prüfen";
+    submit.onclick = () => {
+      const inputValue = document
+        .getElementById("userAnswer")
+        .value.trim()
+        .toLowerCase();
+      checkAnswer(inputValue);
+    };
+    container.appendChild(submit);
   } else if (q.type === "choice") {
     q.options.forEach((option) => {
       const btn = document.createElement("button");
@@ -99,24 +113,24 @@ function showQuestion() {
       btn.onclick = () => checkAnswer(option);
       container.appendChild(btn);
     });
-    return;
   }
-
-  const submit = document.createElement("button");
-  submit.textContent = "Antwort prüfen";
-  submit.onclick = () => {
-    const input = document
-      .getElementById("userAnswer")
-      .value.trim()
-      .toLowerCase();
-    checkAnswer(input);
-  };
-  container.appendChild(submit);
 }
 
-// Prüft die Antwort und geht weiter oder beendet das Spiel
+function showFeedback(message, hint = false) {
+  const feedback = document.getElementById("feedback");
+  feedback.textContent = message;
+  feedback.classList.remove("hidden");
+  if (!hint) {
+    setTimeout(() => {
+      feedback.classList.add("hidden");
+      feedback.textContent = "";
+    }, 3000);
+  }
+}
+
 function checkAnswer(givenAnswer) {
   const correct = questions[currentQuestion].answer.toLowerCase();
+
   if (givenAnswer.toLowerCase() === correct) {
     currentQuestion++;
     if (currentQuestion < questions.length) {
@@ -125,15 +139,26 @@ function checkAnswer(givenAnswer) {
       endGame();
     }
   } else {
-    alert("Falsche Antwort. Versuch es nochmal!");
+    wrongAttempts++;
+    penaltyTime += 120; // 2 Minuten in Sekunden
+
+    if (wrongAttempts >= 3) {
+      showFeedback(
+        `Tipp: Die richtige Antwort war: ${questions[currentQuestion].answer}`,
+        true
+      );
+    } else {
+      showFeedback(
+        `Falsche Antwort. Es wurden +2 Minuten hinzugefügt. (${wrongAttempts}/3)`
+      );
+    }
   }
 }
 
-// Beendet das Spiel und zeigt die Zeit an
 function endGame() {
   clearInterval(timerInterval);
   document.getElementById("gameScreen").classList.add("hidden");
   document.getElementById("endScreen").classList.remove("hidden");
-  const totalTime = Math.floor((Date.now() - startTime) / 1000);
+  const totalTime = Math.floor((Date.now() - startTime) / 1000) + penaltyTime;
   document.getElementById("finalTime").textContent = `${totalTime} Sekunden`;
 }

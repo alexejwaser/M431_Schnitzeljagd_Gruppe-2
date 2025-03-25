@@ -19,3 +19,12 @@ img {
   font-size: 1.5em;
   margin-bottom: 20px;
 }
+#feedback {
+  background-color: #ffd3d3;
+  color: #900;
+  padding: 10px;
+  margin: 15px auto;
+  width: 80%;
+  border-radius: 8px;
+  font-weight: bold;
+}
