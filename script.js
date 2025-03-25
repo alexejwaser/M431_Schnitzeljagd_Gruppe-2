@@ -68,8 +68,19 @@ function startGame() {
 }
 
 function updateTimer() {
-  const seconds = Math.floor((Date.now() - startTime) / 1000) + penaltyTime;
-  document.getElementById("timer").textContent = `Zeit: ${seconds}s`;
+  const totalMilliseconds = Date.now() - startTime + penaltyTime * 1000;
+
+  const minutes = Math.floor(totalMilliseconds / 60000);
+  const seconds = Math.floor((totalMilliseconds % 60000) / 1000);
+  const milliseconds = totalMilliseconds % 1000;
+
+  const paddedMinutes = String(minutes).padStart(2, "0");
+  const paddedSeconds = String(seconds).padStart(2, "0");
+  const paddedMilliseconds = String(milliseconds).padStart(3, "0");
+
+  document.getElementById(
+    "timer"
+  ).textContent = `Zeit: ${paddedMinutes}:${paddedSeconds}:${paddedMilliseconds}`;
 }
 
 function showQuestion() {
