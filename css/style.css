@@ -18,8 +18,10 @@ body {
   margin: 10px 0;
 }
 .box {
-  width: 500px;
-  height: 500px;
+  width: 80vw;
+  padding: 20px;
+  max-width: 300px;
+  height: auto;
   background-color: #048abf;
   display: flex;
   align-items: center;
@@ -53,4 +55,18 @@ img {
   width: 80%;
   border-radius: 8px;
   font-weight: bold;
+}
+#startButton {
+  font-size: 1.5rem;
+  padding: 10px 25px;
+  background-color: #048abf;
+  color: white;
+  border: 3px solid #036b99;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#startButton:hover {
+  background-color: #036b99;
+  transform: scale(1.1);
 }
