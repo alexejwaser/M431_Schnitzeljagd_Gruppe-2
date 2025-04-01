@@ -127,6 +127,7 @@ function showQuestion() {
         .toLowerCase();
       checkAnswer(inputValue);
     };
+    submit.classList.add("button"); // Add the "button" class
     container.appendChild(submit);
   } else if (q.type === "choice") {
     // Mehrere Buttons für Auswahlmöglichkeiten
@@ -134,6 +135,7 @@ function showQuestion() {
       const btn = document.createElement("button");
       btn.textContent = option;
       btn.onclick = () => checkAnswer(option);
+      btn.classList.add("button"); // Add the "button" class
       container.appendChild(btn);
     });
   }
