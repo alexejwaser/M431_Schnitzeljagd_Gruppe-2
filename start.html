@@ -7,24 +7,26 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <h1>Schnitzeljagd</h1>
+    <div class="row">
+      <div class="box">
+        <div id="startScreen">
+          <h1>Schnitzeljagd</h1>
+          <button onclick="startGame()">Start</button>
+        </div>
 
-    <!-- Startbildschirm -->
-    <div id="startScreen">
-      <button onclick="startGame()">Start</button>
-    </div>
+        <!-- Spielfläche mit Timer & Fragen -->
+        <div id="gameScreen" class="hidden">
+          <div class="timer" id="timer">Zeit: 00:00:00</div>
+          <div id="feedback" class="hidden"></div>
+          <div id="questionContainer"></div>
+        </div>
 
-    <!-- Timer und Spielfläche -->
-    <div id="gameScreen" class="hidden">
-      <div class="timer" id="timer">Zeit: 0s</div>
-      <div id="feedback" class="hidden"></div>
-      <div id="questionContainer"></div>
-    </div>
-
-    <!-- Endbildschirm -->
-    <div id="endScreen" class="hidden">
-      <h2>Fertig!</h2>
-      <p>Deine Zeit: <span id="finalTime"></span></p>
+        <!-- Endbildschirm -->
+        <div id="endScreen" class="hidden">
+          <h2>Fertig!</h2>
+          <p>Deine Zeit: <span id="finalTime"></span></p>
+        </div>
+      </div>
     </div>
 
     <script src="script.js"></script>
