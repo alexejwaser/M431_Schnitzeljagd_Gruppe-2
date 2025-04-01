@@ -91,10 +91,10 @@ img {
 }
 
 #startButton:hover {
-  background-color: #a79076;
+  background-color: #9a6120;
   color: #f2e6d8;
   transform: scale(1.05);
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0);
 }
 
 h1 {
@@ -114,4 +114,8 @@ input {
   font-family: "bookmania", serif;
   font-weight: 300;
   font-style: normal;
+}
+
+.credits {
+  color: #d9bc9a;
 }
