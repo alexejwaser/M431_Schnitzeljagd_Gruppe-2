@@ -1,55 +1,56 @@
 // Liste aller Fragen der Schnitzeljagd
 const questions = [
   {
-    image: "https://via.placeholder.com/600x300?text=Posten+1", // Bild-URL für den Posten
-    question: "Wie viele Beine hat ein Hund?", // Text der Frage
-    type: "text", // Antworttyp: Texteingabe
-    answer: "4", // richtige Antwort
-  },
-  {
-    image: "https://via.placeholder.com/600x300?text=Posten+2",
-    question: "Was ist die Hauptstadt von Deutschland?",
-    type: "text",
-    answer: "berlin",
-  },
-  {
-    image: "https://via.placeholder.com/600x300?text=Posten+3",
-    question: "Welche Farbe hat der Himmel?",
-    type: "choice", // Antworttyp: Auswahlmöglichkeiten
-    options: ["Grün", "Blau", "Rot"], // Auswahlmöglichkeiten
-    answer: "Blau",
-  },
-  {
-    image: "https://via.placeholder.com/600x300?text=Posten+4",
-    question: "Wie viele Monate hat ein Jahr?",
-    type: "text",
-    answer: "12",
-  },
-  {
-    image: "https://via.placeholder.com/600x300?text=Posten+5",
-    question: "Welche Frucht ist gelb und krumm?",
+    image: "img/optimiert/1.webp",
+    question: "Mensa, welchen Wassermodus gibt es nicht?",
     type: "choice",
-    options: ["Apfel", "Banane", "Traube"],
-    answer: "Banane",
+    options: ["eiskalt", "kochendes Wasser", "Sprudelwasser"],
+    answer: "Sprudelwasser",
   },
   {
-    image: "https://via.placeholder.com/600x300?text=Posten+6",
-    question: "Wie nennt man ein Junges vom Hund?",
+    image: "img/optimiert/2.webp",
+    question: "Velokeller, Wie viele Veloschilder hat es insgesamt?",
     type: "text",
-    answer: "welpe",
+    answer: "4",
   },
   {
-    image: "https://via.placeholder.com/600x300?text=Posten+7",
-    question: "Wie heißt das größte Land der Welt?",
+    image: "img/optimiert/3.webp",
+    question:
+      "Mensa, Welcher Monat steht oberhalb der Tomate bei der Küche (Abkürzung)?",
+    type: "text",
+    answer: "Jul",
+  },
+  {
+    image: "img/optimiert/4.webp",
+    question: "Medienraum, Welche Marke hat das Mikrofon",
     type: "choice",
-    options: ["Russland", "Kanada", "China"],
-    answer: "Russland",
+    options: ["Rode", "Shure", "HyperX"],
+    answer: "Shure",
   },
   {
-    image: "https://via.placeholder.com/600x300?text=Posten+8",
-    question: "Wie viele Kontinente gibt es?",
+    image: "img/optimiert/5.webp", // This image is missing
+    question: "IT Support Raum, Wohin führt die Tür links vom Support Raum?",
+    type: "choice",
+    options: ["Herren WC", "Damen WC", "Schuladministration"],
+    answer: "Herren WC",
+  },
+  {
+    image: "img/optimiert/6.webp", // This image is missing
+    question: "Aldi (Insert placeholder question)", // Placeholder question
     type: "text",
-    answer: "7",
+    answer: "Insert placeholder solution", // Placeholder solution
+  },
+  {
+    image: "img/optimiert/7.webp",
+    question: "Berufsbildnerplakate, Wie viele Berufsplakate hat es im OG1?",
+    type: "text",
+    answer: "5",
+  },
+  {
+    image: "img/optimiert/8.webp",
+    question: "Drucker, Welche Marke hat der Drucker im OG1?",
+    type: "text",
+    answer: "Ricoh",
   },
 ];
 
